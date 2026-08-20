@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byggeplass Dashboard</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🏗️</span>
+      <h1>Byggeplass Dashboard</h1>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Klokke -->
+    <section class="card clock-card" aria-label="Klokke og dato">
+      <div id="clock" class="clock">--:--:--</div>
+      <div id="date" class="date-line">-</div>
+    </section>
+
+    <!-- Vær -->
+    <section class="card weather-card" aria-label="Værvarsel">
+      <div class="card-header">
+        <h2>Værvarsel – neste 10 dager</h2>
+        <form id="locationForm" class="location-form">
+          <input id="locationInput" type="text" placeholder="Søk sted (f.eks. Oslo)" autocomplete="off">
+          <button type="submit">Søk</button>
+          <button type="button" id="useGeoBtn" title="Bruk min posisjon">📍</button>
+        </form>
+      </div>
+      <div id="locationLabel" class="location-label">Laster sted…</div>
+      <div id="weatherStatus" class="status-line"></div>
+      <div id="weatherDays" class="weather-days"></div>
+    </section>
+
+    <!-- Oppgaver -->
+    <section class="card tasks-card" aria-label="Oppgaver">
+      <div class="card-header">
+        <h2>Oppgaver</h2>
+      </div>
+
+      <form id="taskForm" class="task-form">
+        <input id="taskTitle" type="text" placeholder="Ny oppgave…" required maxlength="200">
+        <input id="taskDue" type="date" required>
+        <select id="taskPriority">
+          <option value="lav">Lav</option>
+          <option value="middels" selected>Middels</option>
+          <option value="hoy">Høy</option>
+          <option value="kritisk">Kritisk</option>
+        </select>
+        <button type="submit">Legg til</button>
+      </form>
+
+      <div class="task-filters">
+        <label><input type="checkbox" id="hideDone"> Skjul fullførte</label>
+        <span id="taskSummary" class="task-summary"></span>
+      </div>
+
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Byggeplass Dashboard · lagres lokalt i nettleseren</span>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

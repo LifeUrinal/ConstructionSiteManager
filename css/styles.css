@@ -1,0 +1,336 @@
+:root {
+  --bg: #12181f;
+  --panel: #1b232c;
+  --panel-border: #2a3541;
+  --text: #e8edf2;
+  --text-dim: #9aa8b4;
+  --accent: #f5a623;
+  --accent-dim: #a86e19;
+  --blue: #3d8bfd;
+  --green: #2ecc71;
+  --red: #e74c3c;
+  --orange: #f39c12;
+  --gray: #6b7a89;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, #0f151b, #12181f 200px);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.topbar {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--panel-border);
+  background: #10161c;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon { font-size: 1.6rem; }
+
+.brand h1 {
+  font-size: 1.3rem;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto auto;
+  gap: 18px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clock-card { grid-column: 1; grid-row: 1; }
+.weather-card { grid-column: 2; grid-row: 1; }
+.tasks-card { grid-column: 1 / span 2; grid-row: 2; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .clock-card, .weather-card, .tasks-card { grid-column: 1; }
+  .clock-card { grid-row: 1; }
+  .weather-card { grid-row: 2; }
+  .tasks-card { grid-row: 3; }
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* Clock */
+.clock-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.clock {
+  font-size: 3.4rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.date-line {
+  margin-top: 6px;
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  text-transform: capitalize;
+}
+
+/* Weather */
+.location-form {
+  display: flex;
+  gap: 6px;
+}
+
+.location-form input {
+  background: #10161c;
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  width: 160px;
+}
+
+.location-form button {
+  background: var(--accent);
+  border: none;
+  color: #1a1206;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.location-form button:hover { background: #ffb941; }
+
+.location-label {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.status-line {
+  color: var(--orange);
+  font-size: 0.85rem;
+  min-height: 1.1em;
+  margin-bottom: 6px;
+}
+
+.weather-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+}
+
+.weather-day {
+  background: #10161c;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.weather-day .wd-name {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-transform: capitalize;
+}
+
+.weather-day .wd-icon {
+  font-size: 1.9rem;
+  margin: 6px 0;
+}
+
+.weather-day .wd-temps {
+  font-size: 0.85rem;
+}
+
+.weather-day .wd-temps .max { color: var(--text); font-weight: 600; }
+.weather-day .wd-temps .min { color: var(--text-dim); }
+
+.weather-day .wd-precip {
+  margin-top: 4px;
+  font-size: 0.72rem;
+  color: var(--blue);
+}
+
+/* Tasks */
+.task-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.task-form input[type="text"] {
+  flex: 1 1 220px;
+}
+
+.task-form input,
+.task-form select {
+  background: #10161c;
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+}
+
+.task-form button {
+  background: var(--accent);
+  border: none;
+  color: #1a1206;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.task-form button:hover { background: #ffb941; }
+
+.task-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.task-summary { color: var(--text-dim); }
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #10161c;
+  border: 1px solid var(--panel-border);
+  border-left: 4px solid var(--gray);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.task-item.prio-lav { border-left-color: var(--gray); }
+.task-item.prio-middels { border-left-color: var(--blue); }
+.task-item.prio-hoy { border-left-color: var(--orange); }
+.task-item.prio-kritisk { border-left-color: var(--red); }
+
+.task-item.done { opacity: 0.5; }
+.task-item.done .task-title { text-decoration: line-through; }
+
+.task-item.overdue:not(.done) .task-due { color: var(--red); font-weight: 600; }
+
+.task-check {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.task-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.task-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0d1115;
+}
+
+.badge.prio-lav { background: var(--gray); }
+.badge.prio-middels { background: var(--blue); color: #fff; }
+.badge.prio-hoy { background: var(--orange); }
+.badge.prio-kritisk { background: var(--red); color: #fff; }
+
+.task-delete {
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  color: var(--text-dim);
+  border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.task-delete:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.empty-state {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  padding: 20px;
+}
